@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+
+* {
+    font-family: 'Cairo', sans-serif;
+    box-shadow: none !important;
+}
+ion-toolbar{
+    box-shadow: none !important;
+}
+
+ion-content {
+    --background: #f1f1f1;
+}
+
+ion-segment-button {
+    height: 20px !important;
+}
+
+.loader {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: white;
+}
+
+.loader * {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: white !important;
+}
+.loader i{
+    font-size: 30px;
+    color: red;
+    transition: all ease-in-out 2s;
+    animation-name: load;
+    animation-duration: 2s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+}
+@keyframes load{
+    0% {
+        transform: rotate(180deg)
+    }
+
+    50% {
+        transform: rotate(3600deg)
+        }
+
+    100% {
+        transform: rotate(0deg)
+    }
+
+}
+
