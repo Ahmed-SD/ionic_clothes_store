@@ -2,16 +2,22 @@
   <ion-page>
     <ion-header>
       <ion-toolbar mode="ios">
-        <ion-back-button :icon="chevronBackOutline" default-href="/tabs/home" mode="md" slot="start"></ion-back-button>
+        <ion-back-button
+          :icon="chevronBackOutline"
+          default-href="/tabs/home"
+          mode="md"
+          slot="start"
+        ></ion-back-button>
         <div class="search">
-          <div class="relative " dir="ltr">
+          <div class="relative" dir="ltr">
             <input
               type="text"
               class="h-12 w-full pl-10 pr-20 rounded-full z-0 focus:shadow focus:outline-none"
               placeholder="ابحث عن منتج"
+              
             >
             <div class="absolute top-2 right-2">
-              <button class="p-2 text-white rounded-full bg-gradient-to-r from-red-700 to-red-500">
+              <button class="p-2 text-white rounded-full bg-red-500 hover:bg-red-600">
                 <svg
                   class="h-4 w-8 fill-current"
                   xmlns="http://www.w3.org/2000/svg"
@@ -37,13 +43,19 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-        <ion-item>
-      <ion-label>ترتيب حسب السعر</ion-label>
-      <ion-select :interface-options="customActionSheetOptions" interface="action-sheet" placeholder="السعر ">
-        <ion-select-option value="red">من الاعلي الي الاقل</ion-select-option>
-        <ion-select-option value="purple">من الاقل الي الاعلي</ion-select-option>
-      </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-label>
+          <i class="fi fi-rr-filter"></i>
+        </ion-label>
+        <ion-select
+          :interface-options="customActionSheetOptions"
+          interface="action-sheet"
+          placeholder="السعر "
+        >
+          <ion-select-option value="red">من الاعلي الي الاقل</ion-select-option>
+          <ion-select-option value="purple">من الاقل الي الاعلي</ion-select-option>
+        </ion-select>
+      </ion-item>
     </ion-content>
   </ion-page>
 </template>
@@ -60,9 +72,9 @@ import { chevronBackOutline } from "ionicons/icons";
 export default {
   name: "search",
   setup() {
-    return{
+    return {
       chevronBackOutline
-    }
+    };
   },
   components: {
     IonPage,

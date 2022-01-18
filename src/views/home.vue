@@ -8,11 +8,13 @@
       <search></search>
       <!-- sections of cat -->
       <main-cat></main-cat>
-      <!-- marka sec -->
-      <cats :marka="marka"></cats>
       <!-- categroy -->
       <cat :category="category" :products="products"></cat>
+      <!-- marka sec -->
+
+      <cats :marka="marka"></cats>
       <!-- products -->
+
       <productsHeaeder :catName="catName"></productsHeaeder>
 
       <products :products="products"></products>
@@ -82,22 +84,22 @@ export default {
 
       category: [
         {
-          id:1,
+          id: 1,
           name: "اقمصه سادة",
           img: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
         },
         {
-          id:2,
+          id: 2,
           name: "اقمصه ملونه",
           img:
             "https://pics.clipartpng.com/midle/Red_T_Shirt_PNG_Clip_Art-3105.png"
         },
         {
-          id:3,
+          id: 3,
           name: "اقمصه مشجرة",
           img:
             "https://www.pngitem.com/pimgs/m/175-1751810_shirts-for-men-png-png-download-shirt-for.png"
-        },
+        }
       ],
       marka: [
         {

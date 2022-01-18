@@ -1,6 +1,6 @@
 <template>
   <div class="catsec">
-    <div class="grid grid-col grid-cols-4 gap-x-1 text-center">
+    <div class="grid grid-col grid-cols-2 gap-x-4 text-center">
       <ion-card class="w-full">
         <ion-card-header>
           <ion-img

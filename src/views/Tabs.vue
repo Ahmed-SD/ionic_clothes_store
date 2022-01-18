@@ -15,7 +15,7 @@
 
         <ion-tab-button @click="presentLoading" dir="ltr" tab="cart" href="/tabs/cart">
           <i class="fi fi-rr-shopping-cart-add text-2xl"></i>
-          <ion-badge class="mx-1 px-2" outline size="large" color="primary" mode="ios">3</ion-badge>
+          <ion-badge class="mx-2" outline size="large" color="primary" mode="ios"> </ion-badge>
           <h2 class="text-center">السله</h2>
         </ion-tab-button>`
         <ion-tab-button @click="presentLoading" tab="contact" href="/tabs/contact">

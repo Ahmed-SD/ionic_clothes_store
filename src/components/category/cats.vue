@@ -13,7 +13,6 @@
       <ion-slides
         mode="ios"
         pager="ios"
-        scrollbar="ios"
         :options="{slidesPerView: 2,spaceBetween: 0}"
         class="py-4"
       >

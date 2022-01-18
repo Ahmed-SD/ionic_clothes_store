@@ -2,12 +2,29 @@
   <ion-page>
     <ion-header>
       <ion-toolbar mode="ios">
-        <ion-back-button :icon="chevronBackOutline" mode="md" default-href="/tabs/category/" slot="start">
-        </ion-back-button>
+        <ion-back-button
+          :icon="chevronBackOutline"
+          mode="md"
+          default-href="/tabs/category/"
+          slot="start"
+        ></ion-back-button>
         <ion-title>{{category[id].name}}</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
+      <ion-item>
+        <ion-label>
+          <i class="fi fi-rr-filter"></i>
+        </ion-label>
+        <ion-select
+          :interface-options="customActionSheetOptions"
+          interface="action-sheet"
+          placeholder="السعر "
+        >
+          <ion-select-option value="red">من الاعلي الي الاقل</ion-select-option>
+          <ion-select-option value="purple">من الاقل الي الاعلي</ion-select-option>
+        </ion-select>
+      </ion-item>
       <products :products="products" :categoryName="id"></products>
     </ion-content>
   </ion-page>
@@ -88,9 +105,9 @@ export default {
     };
   },
   setup() {
-    return{
-    chevronBackOutline
-    }
+    return {
+      chevronBackOutline
+    };
   },
   components: {
     IonPage,

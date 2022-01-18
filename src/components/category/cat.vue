@@ -13,8 +13,8 @@
       <ion-slides
         mode="ios"
         pager="ios"
-        scrollbar="ios"
         :options="{slidesPerView: 1.5,spaceBetween: 0}"
+        class="pb-4"
       >
         <ion-slide class="w-full" :key="product.id" v-for="product in products">
           <ion-card class="w-full h-128">
