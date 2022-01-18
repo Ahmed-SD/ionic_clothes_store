@@ -2,8 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar mode="ios">
-        <ion-back-button mode="md" default-href="/tabs/category/" slot="start">
-          <ion-icon :icon="chevronBackOutline"/>
+        <ion-back-button :icon="chevronBackOutline" mode="md" default-href="/tabs/category/" slot="start">
         </ion-back-button>
         <ion-title>{{category[id].name}}</ion-title>
       </ion-toolbar>
@@ -23,6 +22,8 @@ import {
   IonBackButton,
   alertController
 } from "@ionic/vue";
+import { chevronBackOutline } from "ionicons/icons";
+
 // custom components
 import products from "../components/products/products.vue";
 
@@ -85,6 +86,11 @@ export default {
         }
       ]
     };
+  },
+  setup() {
+    return{
+    chevronBackOutline
+    }
   },
   components: {
     IonPage,

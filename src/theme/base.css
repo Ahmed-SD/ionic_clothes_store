@@ -4,8 +4,9 @@
     font-family: 'Cairo', sans-serif;
     box-shadow: none !important;
 }
-ion-toolbar{
+ion-toolbar *{
     box-shadow: none !important;
+    border: none !important
 }
 
 ion-content {

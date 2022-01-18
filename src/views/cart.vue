@@ -2,7 +2,6 @@
   <ion-page>
     <ion-header>
       <ion-toolbar mode="ios">
-        <ion-back-button slot="start"></ion-back-button>
         <ion-title>السله</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -114,7 +113,7 @@ import {
   IonTitle,
   IonToolbar,
   IonContent,
-  IonBackButton
+  
 } from "@ionic/vue";
 import { addOutline, removeOutline, trashOutline } from "ionicons/icons";
 export default {
@@ -165,7 +164,7 @@ export default {
     IonTitle,
     IonToolbar,
     IonContent,
-    IonBackButton
+    
   },
   methods: {
     addQty(index) {

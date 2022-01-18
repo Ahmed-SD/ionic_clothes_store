@@ -1,10 +1,13 @@
 
 <template>
-  <div class="h-full">
+  <!-- Default -->
+  <div class="modal h-full">
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="end">
-          <ion-button @click="dismissModal()">Close</ion-button>
+          <ion-button @click="dismissModal()" class="text-4xl">
+            <i class="fi fi-rr-cross"></i>
+          </ion-button>
         </ion-buttons>
         <ion-title>تفاصيل الطلب</ion-title>
       </ion-toolbar>
@@ -40,33 +43,35 @@
         </ion-select>
       </ion-item>
       <div class="cart p-2">
-        <router-link to="/tabs/cart/checkout/">
-          <ion-button expand="full">شراء المنتج</ion-button>
-        </router-link>
-        <ion-button expand="full" @click="presentAlert()">اضف للسله</ion-button>
+        <ion-button expand="full" @click="checkout()">شراء المنتج</ion-button>
+        <ion-button expand="full" @click="cart()">اضف للسله</ion-button>
       </div>
     </ion-content>
   </div>
 </template>
 
 <script>
-import { IonContent, IonHeader, IonTitle, IonToolbar ,alertController} from "@ionic/vue";
+import {
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  alertController,
+  modalController
+} from "@ionic/vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "validateProduct",
-  props: {
-    title: { type: String, default: "Super Modal" }
-  },
+  props: ["product"],
   data() {
     return {
-      content: "Content",
-      currentModal: null
+      content: "Content"
     };
   },
-  components: { IonContent, IonHeader, IonTitle, IonToolbar , },
+  components: { IonContent, IonHeader, IonTitle, IonToolbar },
   methods: {
-       async presentAlert() {
+    async presentAlert() {
       const alert = await alertController.create({
         cssClass: "my-custom-class",
         header: "تم اضافه العنصر للسله",
@@ -79,12 +84,15 @@ export default defineComponent({
       console.log("onDidDismiss resolved with role", role);
     },
     dismissModal() {
-      console.log("seeda hd")
-      if (this.currentModal) {
-        this.currentModal.dismiss().then(() => {
-          this.currentModal = null;
-        });
-      }
+      modalController.dismiss({ dismissed: true });
+    },
+    checkout() {
+      this.dismissModal();
+      this.$router.replace("/tabs/cart/checkout");
+    },
+    cart() {
+      modalController.dismiss({ dismissed: true });
+      this.presentAlert();
     }
   }
 });

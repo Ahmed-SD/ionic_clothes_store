@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar mode="ios">
-        <ion-back-button default-href="/tabs/cart" mode="md" slot="start"></ion-back-button>
+        <ion-back-button :icon="chevronBackOutline" default-href="/tabs/cart" mode="md" slot="start"></ion-back-button>
         <ion-title>اتمام الطلب</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -103,6 +103,8 @@ import {
   IonContent,
   IonBackButton
 } from "@ionic/vue";
+import { chevronBackOutline } from "ionicons/icons";
+
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 export default {
@@ -123,6 +125,11 @@ export default {
       addr: "",
       validate: true
     };
+  },
+  setup() {
+    return{
+      chevronBackOutline
+    }
   },
 
   validations() {

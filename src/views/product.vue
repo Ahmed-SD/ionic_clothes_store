@@ -2,8 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar mode="ios">
-        <ion-back-button mode="md" default-href="/tabs/category/products" slot="start">
-          <ion-icon :icon="chevronBackOutline"/>
+        <ion-back-button :icon="chevronBackOutline" mode="md" :default-href="'/tabs/category/products/'+id" slot="start">
         </ion-back-button>
         <ion-title>Air max</ion-title>
       </ion-toolbar>
@@ -87,6 +86,7 @@ import {
   modalController
 } from "@ionic/vue";
 import validateProduct from './validateProduct.vue'
+import { chevronBackOutline } from "ionicons/icons";
 
 export default {
   name: "product",
@@ -97,6 +97,11 @@ export default {
     IonToolbar,
     IonContent,
     IonBackButton,
+  },
+  setup() {
+    return{
+      chevronBackOutline
+    }
   },
   data() {
     return {
@@ -155,8 +160,7 @@ export default {
           component: validateProduct,
           cssClass: 'my-custom-class',
           componentProps: {
-            title: 'New Title',
-            isOpent : false
+            product : this.products[this.id]
           },
         })
       return modal.present();

@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar mode="ios">
-        <ion-back-button default-href="/tabs/home" mode="md" slot="start"></ion-back-button>
+        <ion-back-button :icon="chevronBackOutline" default-href="/tabs/home" mode="md" slot="start"></ion-back-button>
         <div class="search">
           <div class="relative " dir="ltr">
             <input
@@ -37,7 +37,13 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      
+        <ion-item>
+      <ion-label>ترتيب حسب السعر</ion-label>
+      <ion-select :interface-options="customActionSheetOptions" interface="action-sheet" placeholder="السعر ">
+        <ion-select-option value="red">من الاعلي الي الاقل</ion-select-option>
+        <ion-select-option value="purple">من الاقل الي الاعلي</ion-select-option>
+      </ion-select>
+    </ion-item>
     </ion-content>
   </ion-page>
 </template>
@@ -49,8 +55,15 @@ import {
   IonContent,
   IonBackButton
 } from "@ionic/vue";
+import { chevronBackOutline } from "ionicons/icons";
+
 export default {
   name: "search",
+  setup() {
+    return{
+      chevronBackOutline
+    }
+  },
   components: {
     IonPage,
     IonHeader,
