@@ -3,9 +3,9 @@
     <div class="products">
       <ion-grid>
         <ion-row>
-          <ion-col size="6" >
+          <ion-col size="6">
             <ion-card class="w-full h-min" :key="product.id" v-for="(product,index) in products">
-              <router-link :to="'/tabs/category/products/product/'+index" >
+              <router-link :to="'/tabs/category/products/product/'+index">
                 <ion-card-header>
                   <ion-img :src="product.image" class="w-full"></ion-img>
                 </ion-card-header>
@@ -17,35 +17,16 @@
                     <h2>Product</h2>
                   </ion-text>
                 </div>
-                <div class="slid flex py-2">
-                  <ion-text color="primary">
-                    <h2>المقاس</h2>
-                  </ion-text>
-                  <ion-slides>
-                    <ion-slide>
-                      <h2>40</h2>
-                    </ion-slide>
-                    <ion-slide>
-                      <h2>39</h2>
-                    </ion-slide>
-                    <ion-slide>
-                      <h2>42</h2>
-                    </ion-slide>
-                    <ion-slide>
-                      <h2>45</h2>
-                    </ion-slide>
-                  </ion-slides>
-                </div>
+             
                 <div class="button text-center space-y-2">
                   <ion-text color="primary">
                     <h2>{{product.price}}$</h2>
                   </ion-text>
-                  <ion-button expand="full" @click="presentAlert">اضف للسله</ion-button>
                 </div>
               </ion-card-content>
             </ion-card>
           </ion-col>
-           <ion-col size="6" >
+          <ion-col size="6">
             <ion-card class="w-full py-4 h-min" :key="product.id" v-for="product in products">
               <router-link to="/tabs/category/products/product">
                 <ion-card-header>
@@ -59,30 +40,11 @@
                     <h2>Product</h2>
                   </ion-text>
                 </div>
-                <div class="slid flex py-2">
-                  <ion-text color="primary">
-                    <h2>المقاس</h2>
-                  </ion-text>
-                  <ion-slides>
-                    <ion-slide>
-                      <h2>40</h2>
-                    </ion-slide>
-                    <ion-slide>
-                      <h2>39</h2>
-                    </ion-slide>
-                    <ion-slide>
-                      <h2>42</h2>
-                    </ion-slide>
-                    <ion-slide>
-                      <h2>45</h2>
-                    </ion-slide>
-                  </ion-slides>
-                </div>
+               
                 <div class="button text-center space-y-2">
                   <ion-text color="primary">
                     <h2>{{product.price}}$</h2>
                   </ion-text>
-                  <ion-button expand="full" @click="presentAlert">اضف للسله</ion-button>
                 </div>
               </ion-card-content>
             </ion-card>
@@ -93,17 +55,26 @@
   </div>
 </template>
 <script>
-import {IonCard} from "@ionic/vue";
+import { IonCard } from "@ionic/vue";
+import { chevronBackOutline } from "ionicons/icons";
 export default {
   name: "products",
-  props : ["products","categoryName"],
-  data() {
+  props: ["products", "categoryName"],
+  setup() {
     return {
-      
-    }
+      chevronBackOutline
+    };
+  },
+  data() {
+    return {};
   },
   components: {
     IonCard
+  },
+  methods: {
+    next() {
+            this.$refs.slides.sideTo(2,1000);
+    }
   }
 };
 </script>

@@ -12,36 +12,51 @@
         <ion-title>تفاصيل الطلب</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="h-full">
-      <ion-item>
-        <ion-label>اللون</ion-label>
-        <ion-select value="brown" ok-text="تم" cancel-text="الغاء">
-          <ion-select-option value="brown">احمر</ion-select-option>
-          <ion-select-option value="blonde">اخضر</ion-select-option>
-          <ion-select-option value="black">بنفسجي</ion-select-option>
-          <ion-select-option value="red">برتقالي</ion-select-option>
-        </ion-select>
-      </ion-item>
+    <ion-content class="h-full py-4">
+      <div class="flex justify-between pt-4 p-2">
+           <h2>اللون</h2>
+           <h2>اختر واحدا</h2>
+         </div>
+      <div class="grid grid-col grid-cols-3 gap-4 p-4 rounded w-full">
+        <ion-img :src="product.image" class="w-full"></ion-img>
+        <ion-img :src="product.image" class="w-full"></ion-img>
+        <ion-img :src="product.image" class="w-full"></ion-img>
+        <ion-img :src="product.image" class="w-full"></ion-img>
+      </div>
 
-      <ion-item>
-        <ion-label>المقاس</ion-label>
-        <ion-select value="brown" ok-text="تم" cancel-text="الغاء">
-          <ion-select-option value="brown">44</ion-select-option>
-          <ion-select-option value="blonde">45</ion-select-option>
-          <ion-select-option value="black">40</ion-select-option>
-          <ion-select-option value="red">41</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>الكميه</ion-label>
-        <ion-select value="brown" ok-text="تم" cancel-text="الغاء">
-          <ion-select-option value="brown">1</ion-select-option>
-          <ion-select-option value="blonde">2</ion-select-option>
-          <ion-select-option value="black">3</ion-select-option>
-          <ion-select-option value="red">4</ion-select-option>
-        </ion-select>
-      </ion-item>
+      <div class="p-4">
+         <div class="flex justify-between p-2">
+           <h2>المقاس</h2>
+           <h2>اختر واحدا</h2>
+         </div>
+        <div class="grid grid-col grid-cols-6 gap-4 p-4 rounded w-full">
+          <span class="p-2 bg-white flex items-center justify-center rounded" :key="item" v-for="item in 10">
+            {{item}}
+          </span>
+        </div>
+      </div>
+      <div class="qty py-4 px-2 flex justify-between items-center">
+        <ion-label class="text-xl px-2">الكميه</ion-label>
+        <div class="custom-number-input h-10 w-32">
+          <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+            <button
+              class="bg-red-600 text-white hover:text-white hover:bg-red-700 p-3 rounded cursor-pointer flex flex-col items-center justify-center"
+            >
+              <i class="fi fi-rr-minus"></i>
+            </button>
+            <input
+              type="number"
+              class="outline-none focus:outline-none text-center w-full bg-white font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700 outline-none"
+              value="2"
+            >
+            <button
+              class="bg-red-600 text-white hover:text-white hover:bg-red-700 p-3 rounded cursor-pointer flex flex-col items-center justify-center"
+            >
+              <i class="fi fi-rr-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
       <div class="cart p-2">
         <ion-button expand="full" @click="checkout()">شراء المنتج</ion-button>
         <ion-button expand="full" @click="cart()">اضف للسله</ion-button>

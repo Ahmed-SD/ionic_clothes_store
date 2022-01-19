@@ -30,30 +30,10 @@
                   <h2>Product</h2>
                 </ion-text>
               </div>
-              <div class="slid flex py-2">
-                <ion-text color="primary">
-                  <h2>المقاس</h2>
-                </ion-text>
-                <ion-slides>
-                  <ion-slide>
-                    <h2>40</h2>
-                  </ion-slide>
-                  <ion-slide>
-                    <h2>39</h2>
-                  </ion-slide>
-                  <ion-slide>
-                    <h2>42</h2>
-                  </ion-slide>
-                  <ion-slide>
-                    <h2>45</h2>
-                  </ion-slide>
-                </ion-slides>
-              </div>
               <div class="button text-center space-y-2">
                 <ion-text color="primary">
                   <h2>{{product.price}}$</h2>
                 </ion-text>
-                <ion-button expand="full" @click="presentAlert">اضف للسله</ion-button>
               </div>
             </ion-card-content>
           </ion-card>
