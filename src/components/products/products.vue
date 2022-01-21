@@ -27,7 +27,7 @@
             </ion-card>
           </ion-col>
           <ion-col size="6">
-            <ion-card class="w-full py-4 h-min" :key="product.id" v-for="product in products">
+            <ion-card class="w-full py-4 h-min" :key="product.id" v-for="product in allProducts">
               <router-link to="/tabs/category/products/product">
                 <ion-card-header>
                   <ion-img :src="product.image" class="w-full"></ion-img>
