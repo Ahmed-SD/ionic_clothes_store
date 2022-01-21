@@ -56,7 +56,7 @@ export default {
     async presentLoading() {
       const loading = await loadingController.create({
         cssClass: "loader",
-        message: '<i class="fi fi-rr-spinner"></i>',
+        message: '<img src="https://st.depositphotos.com/47577860/52256/v/600/depositphotos_522560928-stock-illustration-loading-spanner-spinner-icon-solid.jpg" >',
         duration: 1000
       });
 
