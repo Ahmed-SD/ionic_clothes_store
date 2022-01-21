@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { IonPage } from "@ionic/vue";
+import { IonPage,IonHeader,IonToolbar,IonTitle,IonContent } from "@ionic/vue";
 // custom components
 import category from '../components/category/category.vue'
 import catTabs from '../components/category/catTabs.vue'
@@ -25,7 +25,7 @@ import search from "../components/search.vue";
 export default {
   name: "categoryPage",
   components: {
-    IonPage,
+    IonPage,IonHeader,IonToolbar,IonTitle,IonContent,
     category,
     search,
     catTabs

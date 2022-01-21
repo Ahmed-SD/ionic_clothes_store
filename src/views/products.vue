@@ -37,7 +37,11 @@ import {
   IonToolbar,
   IonContent,
   IonBackButton,
-  alertController
+  alertController,
+  IonItem,
+  IonLabel,
+  IonSelect,
+  IonSelectOption
 } from "@ionic/vue";
 import { chevronBackOutline } from "ionicons/icons";
 
@@ -115,7 +119,11 @@ export default {
     IonToolbar,
     IonContent,
     IonBackButton,
-    products
+    products,
+    IonItem,
+    IonLabel,
+    IonSelect,
+    IonSelectOption
   },
   methods: {
     async presentAlert() {

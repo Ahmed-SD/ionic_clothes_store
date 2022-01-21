@@ -112,8 +112,18 @@ import {
   IonHeader,
   IonTitle,
   IonToolbar,
-  IonContent
+  IonContent,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonButton,
+  IonLabel,
+  IonText,
+  IonIcon,
+  IonImg
 } from "@ionic/vue";
+
 import { addOutline, removeOutline, trashOutline } from "ionicons/icons";
 export default {
   name: "cart",
@@ -158,11 +168,20 @@ export default {
     };
   },
   components: {
-    IonPage,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
-    IonContent
+  IonPage,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonContent,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonButton,
+  IonLabel,
+  IonText,
+  IonIcon,
+  IonImg
   },
   methods: {
     addQty(index) {

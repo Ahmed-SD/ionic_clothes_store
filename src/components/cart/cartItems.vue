@@ -16,7 +16,7 @@
             <div class="head flex items-center">
               <img src="../../public/assets/1.jpg" alt class="w-32">
               <div class="content">
-                <div class="qty px-2 ">
+                <div class="qty px-2">
                   <ion-label class="text-xl px-2">الكميه</ion-label>
                   <div class="flex items-center">
                     <ion-button size="small" v-on:click="qty=qty+1">
@@ -99,7 +99,15 @@ import {
   IonTitle,
   IonToolbar,
   IonContent,
-  IonBackButton
+  IonBackButton,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonButton,
+  IonLabel,
+  IonText,
+  IonIcon
 } from "@ionic/vue";
 import { addOutline, removeOutline, trashOutline } from "ionicons/icons";
 export default {
@@ -116,9 +124,16 @@ export default {
     IonTitle,
     IonToolbar,
     IonContent,
-    IonBackButton
-  },
-
+    IonBackButton,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardTitle,
+    IonButton,
+    IonLabel,
+    IonText,
+    IonIcon
+  }
 };
 </script>
 

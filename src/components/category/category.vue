@@ -2,53 +2,39 @@
   <div class="categories w-full col-span-2 overflow-hidden">
     <div class="w-full">
       <!--  -->
-      <router-link :to="'/tabs/category/products/'+index" :key="item.id" v-for="(item,index) in category">
-
+      <router-link
+        to="/tabs/category/products/0"
+        :key="item.id"
+        v-for="item in allTypes"
+      >
         <ion-card>
           <ion-card-content>
-            <ion-img
-              :src="item.img"
-              class="w-full py-2"
-            ></ion-img>
+            <ion-img :src="item.img" class="w-full py-2"></ion-img>
             <ion-text class="text-center">
               <h1>{{item.name}}</h1>
             </ion-text>
           </ion-card-content>
         </ion-card>
       </router-link>
-
-
     </div>
   </div>
 </template>
 <script>
-import {} from "@ionic/vue";
+import {IonText,IonCard,IonCardContent,IonImg} from "@ionic/vue";
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "category",
-  components: {},
+  components: {IonText,IonCard,IonCardContent,IonImg},
   data() {
-    return {
-      category: [
-        {
-          name: "اقمصه سادة",
-          img: "https://freepngimg.com/thumb/categories/627.png"
-        },
-        {
-          name: "اقمصه ملونه",
-          img:
-            "https://pics.clipartpng.com/midle/Red_T_Shirt_PNG_Clip_Art-3105.png"
-        },
-        {
-          name: "اقمصه مشجرة",
-          img:
-            "https://www.pngitem.com/pimgs/m/175-1751810_shirts-for-men-png-png-download-shirt-for.png"
-        },
-        {
-          name: "اقمصه سادة",
-          img: "https://freepngimg.com/thumb/categories/627.png"
-        }
-      ]
-    };
+    return {};
+  },
+  methods: {
+    ...mapActions(["fetchTypes"])
+  },
+  computed: mapGetters(["allTypes"]),
+  created() {
+    this.fetchTypes();
   }
 };
 </script>

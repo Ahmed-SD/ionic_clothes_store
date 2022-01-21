@@ -5,8 +5,7 @@
         <h1>افضل الماركات</h1>
       </ion-text>
       <ion-text class="flex items-center justify-between" color="primary">
-        <router-link to="/tabs/category/products">عرض المزيد</router-link>
-        <ion-icon :icon="arrowBackOutline"/>
+        <router-link to="/tabs/category/products/0">عرض المزيد</router-link>
       </ion-text>
     </div>
     <div class="">
@@ -16,7 +15,7 @@
         :options="{slidesPerView: 2,spaceBetween: 0}"
         class="py-4"
       >
-        <ion-slide :key="item.id" v-for="item in marka">
+        <ion-slide :key="item.id" v-for="item in allBrands">
           <ion-card class="w-full h-full flex flex-col justify-between">
             <ion-card-header>
               <ion-card-title>
@@ -36,11 +35,20 @@
   </div>
 </template>
 <script>
-import {} from "@ionic/vue";
+import {IonText,IonSlides,IonSlide,IonCard,IonCardHeader,IonCardTitle,IonImg,IonCardContent} from "@ionic/vue";
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "cats",
-  props :["marka"],
-  components: {}
+  components: {IonText,IonSlides,IonSlide,IonCard,IonCardHeader,IonCardTitle,IonImg,IonCardContent},
+  methods: {
+        ...mapActions(["fetchBrands"]),
+
+  },
+   computed: mapGetters([ "allBrands"]),
+  created() {
+    this.fetchBrands();
+  },
 };
 </script>
 

@@ -37,10 +37,10 @@
   </div>
 </template>
 <script>
-import {} from "@ionic/vue";
+import {IonCard,IonCardHeader,IonImg,IonCardContent} from "@ionic/vue";
 export default {
   name: "mainCat",
-  components: {}
+  components: {IonCard,IonCardHeader,IonImg,IonCardContent}
 };
 </script>
 

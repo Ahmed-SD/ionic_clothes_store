@@ -1,23 +1,20 @@
 <template>
   <ion-page>
     <ion-content>
-      <ion-refresher slot="fixed" @ionRefresh="doRefresh($event)">
-        <ion-refresher-content></ion-refresher-content>
-      </ion-refresher>
 
       <search></search>
       <!-- sections of cat -->
       <main-cat></main-cat>
       <!-- categroy -->
-      <cat :category="category" :products="products"></cat>
+      <cat></cat>
       <!-- marka sec -->
 
-      <cats :marka="marka"></cats>
+      <cats></cats>
       <!-- products -->
 
-      <productsHeaeder :catName="catName"></productsHeaeder>
+      <productsHeaeder></productsHeaeder>
 
-      <products :products="products"></products>
+      <products></products>
     </ion-content>
   </ion-page>
 </template>

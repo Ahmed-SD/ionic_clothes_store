@@ -2,8 +2,12 @@
   <ion-page>
     <ion-header>
       <ion-toolbar mode="ios">
-        <ion-back-button :icon="chevronBackOutline" mode="md" default-href="/tabs/cart/checkout" slot="start">
-        </ion-back-button>
+        <ion-back-button
+          :icon="chevronBackOutline"
+          mode="md"
+          default-href="/tabs/cart/checkout"
+          slot="start"
+        ></ion-back-button>
         <ion-title>تفاصيل الطلب</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -49,9 +53,14 @@ import {
   IonTitle,
   IonToolbar,
   IonContent,
-  IonBackButton
+  IonBackButton,
+  IonList,
+  IonItem,
+  IonIcon,
+  IonAvatar,
+  IonLabel
 } from "@ionic/vue";
-import { checkmark, alarmOutline,chevronBackOutline } from "ionicons/icons";
+import { checkmark, alarmOutline, chevronBackOutline } from "ionicons/icons";
 
 export default {
   name: "order",
@@ -61,7 +70,12 @@ export default {
     IonTitle,
     IonToolbar,
     IonContent,
-    IonBackButton
+    IonBackButton,
+    IonList,
+    IonItem,
+    IonIcon,
+    IonAvatar,
+    IonLabel
   },
   setup() {
     return {

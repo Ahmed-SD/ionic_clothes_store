@@ -2,7 +2,12 @@
   <ion-page>
     <ion-header>
       <ion-toolbar mode="ios">
-        <ion-back-button :icon="chevronBackOutline" default-href="/tabs/cart" mode="md" slot="start"></ion-back-button>
+        <ion-back-button
+          :icon="chevronBackOutline"
+          default-href="/tabs/cart"
+          mode="md"
+          slot="start"
+        ></ion-back-button>
         <ion-title>اتمام الطلب</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -101,7 +106,11 @@ import {
   IonTitle,
   IonToolbar,
   IonContent,
-  IonBackButton
+  IonBackButton,
+  IonCard,
+  IonCardContent,
+  IonText,
+  IonButton
 } from "@ionic/vue";
 import { chevronBackOutline } from "ionicons/icons";
 
@@ -115,7 +124,11 @@ export default {
     IonTitle,
     IonToolbar,
     IonContent,
-    IonBackButton
+    IonBackButton,
+    IonCard,
+    IonCardContent,
+     IonText,
+  IonButton
   },
   data() {
     return {
@@ -127,9 +140,9 @@ export default {
     };
   },
   setup() {
-    return{
+    return {
       chevronBackOutline
-    }
+    };
   },
 
   validations() {
@@ -144,8 +157,6 @@ export default {
         this.validate = true;
         this.$router.replace("/tabs/cart/checkout/order");
         // do order function here
-        
-        
       } else if (this.v$.$error) {
         this.validate = false;
         console.log(this.v$, this.phone);

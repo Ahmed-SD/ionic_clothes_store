@@ -34,7 +34,8 @@ import {
   IonTabs,
   IonPage,
   IonRouterOutlet,
-  loadingController
+  loadingController,
+  IonBadge
 } from "@ionic/vue";
 
 export default {
@@ -44,6 +45,7 @@ export default {
     IonTabBar,
     IonTabButton,
     IonPage,
+    IonBadge,
     IonRouterOutlet
   },
 

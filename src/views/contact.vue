@@ -17,8 +17,7 @@
         <ion-card>
           <ion-card-content>
             <form class="w-full">
-
-                <div class="floating-input mb-5 relative">
+              <div class="floating-input mb-5 relative">
                 <input
                   type="text"
                   id="name"
@@ -76,7 +75,6 @@
                 >رسالتك</label>
               </div>
 
-            
               <div class="checkout">
                 <ion-button expand="block" @click="send()">ارسال الرساله</ion-button>
               </div>
@@ -116,7 +114,14 @@ import {
   IonContent,
   IonBackButton,
   alertController,
-  toastController
+  toastController,
+  IonCard,
+  IonCardContent,
+  IonFab,
+  IonButton,
+  IonIcon,
+  IonFabButton,
+  IonFabList
 } from "@ionic/vue";
 import {
   chatbubblesOutline,
@@ -132,13 +137,21 @@ export default {
     IonTitle,
     IonToolbar,
     IonContent,
-    IonBackButton
+    IonIcon,
+    IonBackButton,
+    IonCard,
+    IonCardContent,
+    IonButton,
+    IonFab,
+    IonFabButton,
+    IonFabList
   },
   data() {
     return {
       name: "",
       email: "",
       message: "",
+      phone:"",
       validate: true
     };
   },
@@ -152,7 +165,7 @@ export default {
         this.email == " ";
         this.message == " ";
         // do email function
-        this.openToast()
+        this.openToast();
       }
     },
     async presentAlert() {
@@ -167,15 +180,14 @@ export default {
       const { role } = await alert.onDidDismiss();
       console.log("onDidDismiss resolved with role", role);
     },
-      async openToast() {
-      const toast = await toastController
-        .create({
-          message: 'تم ارسال رسالتك',
-          duration: 4000,
-          color : "primary"
-        })
+    async openToast() {
+      const toast = await toastController.create({
+        message: "تم ارسال رسالتك",
+        duration: 4000,
+        color: "primary"
+      });
       return toast.present();
-    },
+    }
   },
   setup() {
     return {
@@ -191,8 +203,8 @@ export default {
 ion-content {
   --background: white !important;
 }
-.floating-input > input::placeholder, 
-.floating-input > textarea::placeholder, {
+.floating-input > input::placeholder,
+.floating-input > textarea::placeholder {
   color: transparent;
 }
 
