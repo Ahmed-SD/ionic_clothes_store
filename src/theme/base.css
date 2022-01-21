@@ -31,14 +31,13 @@ ion-segment-button {
     padding: 0;
     background: white !important;
 }
-.loader i{
-    font-size: 30px;
-    color: red;
-    transition: all ease-in-out 2s;
+.loader img{
+    transition: all ease-in 3s;
     animation-name: load;
-    animation-duration: 2s;
+    animation-duration: 3s;
     animation-delay: 0s;
     animation-iteration-count: infinite;
+    margin-right: -35px;
 }
 @keyframes load{
     0% {
@@ -46,12 +45,14 @@ ion-segment-button {
     }
 
     50% {
-        transform: rotate(3600deg)
+        transform: rotate(360deg)
         }
 
-    100% {
-        transform: rotate(0deg)
+    75% {
+        transform: rotate(540deg)
     }
-
+    100% {
+        transform: rotate(720deg)
+    }
 }
 
