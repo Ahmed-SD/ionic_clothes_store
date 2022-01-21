@@ -33,6 +33,7 @@ import cats from "../components/category/cats.vue";
 import cat from "../components/category/cat.vue";
 import products from "../components/products/products.vue";
 import productsHeaeder from "../components/productsHeader.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "home",
@@ -125,6 +126,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["fetchProducts", "fetchTypes", "fetchBrands"]),
     async presentAlert() {
       const alert = await alertController.create({
         cssClass: "my-custom-class",
@@ -133,10 +135,16 @@ export default {
         buttons: ["تم"]
       });
       await alert.present();
-
       const { role } = await alert.onDidDismiss();
       console.log("onDidDismiss resolved with role", role);
+      console.log(this.allProducts, this.allTypes, this.allBrands)
     }
-  }
+  },
+  computed: mapGetters(["allProducts", "allTypes", "allBrands"]),
+  created() {
+    this.fetchProducts();
+    this.fetchTypes();
+    this.fetchBrands();
+  },
 };
 </script>

@@ -43,7 +43,6 @@ import { chevronBackOutline } from "ionicons/icons";
 
 // custom components
 import products from "../components/products/products.vue";
-
 export default {
   name: "allProducts",
   data() {
