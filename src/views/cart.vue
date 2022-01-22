@@ -17,7 +17,7 @@
             <ion-card-header></ion-card-header>
             <ion-card-content>
               <div class="head flex items-center space-y-2">
-                <ion-img :src="item.immg" class="w-48"></ion-img>
+                <ion-img :src="item.images[0]" class="w-48"></ion-img>
                 <div class="content">
                   <ion-card-title class="text-center">{{item.name}}</ion-card-title>
 
@@ -123,70 +123,37 @@ import {
   IonIcon,
   IonImg
 } from "@ionic/vue";
-
 import { addOutline, removeOutline, trashOutline } from "ionicons/icons";
+import { mapGetters } from "vuex";
 export default {
   name: "cart",
   data() {
     return {
-      cart: [
-        {
-          id: 1,
-          name: "Nike air max",
-          price: 300,
-          immg:
-            "https://pngimg.com/uploads/dress_shirt/dress_shirt_PNG8117.png",
-          qty: 1
-        },
-        {
-          id: 2,
-          name: "Nike air max",
-          price: 300,
-          immg:
-            "https://www.pngitem.com/pimgs/m/175-1751810_shirts-for-men-png-png-download-shirt-for.png",
-          qty: 1
-        },
-        {
-          id: 3,
-          name: "Nike air max",
-          price: 300,
-          immg:
-            "https://pngimg.com/uploads/dress_shirt/dress_shirt_PNG8117.png",
-          qty: 1
-        },
-        {
-          id: 4,
-          name: "Nike air max",
-          price: 300,
-          immg:
-            "https://www.pngitem.com/pimgs/m/175-1751810_shirts-for-men-png-png-download-shirt-for.png",
-          qty: 1
-        }
-      ],
+      cart: [],
       empty: true,
       full: false
     };
   },
   components: {
-  IonPage,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-  IonContent,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
-  IonButton,
-  IonLabel,
-  IonText,
-  IonIcon,
-  IonImg
+    IonPage,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    IonContent,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardTitle,
+    IonButton,
+    IonLabel,
+    IonText,
+    IonIcon,
+    IonImg
   },
   methods: {
     addQty(index) {
       this.cart[index].qty++;
-      this.cart[index].price += this.cart[index].price;
+      this.cart[index].price = this.cart[index].price * this.cart[index].qty;
     },
     remQty(index) {
       if (this.cart[index].qty == 0) {
@@ -204,13 +171,13 @@ export default {
     },
     removeProduct(index) {
       this.cart.splice(index, 1);
-      if (this.cart.length == 0) {
-        this.empty = !this.empty;
-        this.full = !this.full;
-      } else {
-        this.full = false;
-        this.empty = true;
-      }
+      // if (this.cart.length == 0) {
+      //   this.empty = !this.empty;
+      //   this.full = !this.full;
+      // } else {
+      //   this.full = false;
+      //   this.empty = true;
+      // }
     },
     totalprice() {
       let sum = 0;
@@ -220,14 +187,16 @@ export default {
       return sum;
     }
   },
+  computed: mapGetters(["cart"]),
   created() {
-    if (this.cart.length == 0) {
-      this.empty = !this.empty;
-      this.full = !this.full;
-    } else {
-      this.full = false;
-      this.empty = true;
-    }
+    this.cart = this.$store.getters.cart;
+    //   if (this.cart.length == 0) {
+    //   this.empty = !this.empty;
+    //   this.full = !this.full;
+    // } else {
+    //   this.full = false;
+    //   this.empty = true;
+    // }
   },
   setup() {
     return {

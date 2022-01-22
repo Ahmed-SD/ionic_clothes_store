@@ -71,7 +71,7 @@ export default {
     }
   },
   computed: mapGetters(["allProducts", "allTypes", "allBrands"]),
-  created() {
+  mounted() {
     this.fetchProducts();
     this.fetchTypes();
     this.fetchBrands();

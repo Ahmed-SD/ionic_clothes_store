@@ -8,13 +8,13 @@
           :default-href="'/tabs/category/products/'+id"
           slot="start"
         ></ion-back-button>
-        <ion-title>{{products[id].name}}</ion-title>
+        <ion-title><h1>{{products[$route.params.id].name}}</h1></ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <div class="product">
         <ion-slides mode="ios" pager="ios" scrollbar="ios">
-          <ion-slide :key="img" v-for="img in products.images">
+          <ion-slide :key="img" v-for="img in products[$route.params.id].images">
             <ion-img class="w-full" :src="img"></ion-img>
           </ion-slide>
         </ion-slides>
@@ -22,7 +22,7 @@
           <ion-card-content>
             <div class="product-dec">
               <ion-text class="text-center text-xl py-2">
-                <h1>{{products[id].name}}</h1>
+                <h1>{{products[$route.params.id].name}}</h1>
               </ion-text>
               <div class="slid flex justify-center py-2 px-4 text-xl">
                 <ion-text color="primary">
@@ -48,7 +48,7 @@
                   <h2>السعر</h2>
                 </ion-text>
                 <ion-text color="primary">
-                  <h2>{{products[id].price}} $</h2>
+                  <h2>{{products[$route.params.id].price}} $</h2>
                 </ion-text>
               </div>
             </div>
@@ -62,13 +62,12 @@
               <h2>الوصف</h2>
             </ion-text>
             <ion-text>
-              <p>{{products[id].description}}</p>
+              <p>{{products[$route.params.id].description}}</p>
             </ion-text>
           </ion-card-content>
         </ion-card>
       </div>
       <div class="cart p-2">
-        <ion-button expand="full" @click="openModal">شراء المنتج</ion-button>
         <ion-button expand="full" @click="openModal">اضف للسله</ion-button>
       </div>
     </ion-content>
@@ -94,7 +93,7 @@ import {
 } from "@ionic/vue";
 import validateProduct from "./validateProduct.vue";
 import { chevronBackOutline } from "ionicons/icons";
-import { mapGetters, mapActions } from "vuex";
+import {  mapActions } from "vuex";
 
 export default {
   name: "product",
@@ -120,8 +119,8 @@ export default {
   },
   data() {
     return {
-      id: this.$route.params.id,
-      products: this.allProducts
+
+      products: []
     };
   },
   methods: {
@@ -144,16 +143,16 @@ export default {
         component: validateProduct,
         cssClass: "my-custom-class",
         componentProps: {
-          product: this.allProducts[this.id]
+          product: this.products[this.$route.params.id]
         }
       });
       return modal.present();
     }
   },
-  computed: mapGetters(["allProducts"]),
-  mounted() {
-    this.fetchProducts();
-  }
+  created() {
+    this.$store.dispatch('fetchProducts')
+    this.products = this.$store.getters.allProducts
+  },
 };
 </script>
 

@@ -1,4 +1,7 @@
-import { createRouter, createWebHistory } from "@ionic/vue-router";
+import {
+  createRouter,
+  createWebHistory
+} from "@ionic/vue-router";
 import Tabs from "../views/Tabs.vue";
 import categoryPage from "../views/category.vue";
 import home from "../views/home.vue";
@@ -10,49 +13,48 @@ import allProducts from "../views/products.vue";
 import product from "../views/product.vue";
 import search from "../views/search.vue";
 
-const routes = [
-  {
+const routes = [{
     path: "/",
     redirect: "/tabs/home"
   },
   {
     path: "/tabs/",
     component: Tabs,
-    children: [
-      {
+    children: [{
         path: "home",
-        component : home
+        component: home
       },
       {
         path: "home/search",
-        component : search
+        component: search
       },
       {
         path: "category",
-        component:categoryPage
+        component: categoryPage
       },
       {
         path: "category/products/:id",
-        component:allProducts
-      }, {
+        component: allProducts
+      },
+      {
         path: "category/products/product/:id",
-        component:product,
-            },
+        component: product,
+      },
       {
         path: "cart",
-        component:cart,
+        component: cart,
       },
       {
         path: "cart/checkout/",
-        component:checkout,
+        component: checkout,
       },
       {
         path: "cart/checkout/order",
-        component:order,
+        component: order,
       },
       {
         path: "contact",
-        component:contact,
+        component: contact,
       },
     ]
   }

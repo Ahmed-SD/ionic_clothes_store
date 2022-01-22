@@ -107,7 +107,9 @@ export default defineComponent({
     },
     cart() {
       modalController.dismiss({ dismissed: true });
-      this.presentAlert();
+      this.$store.dispatch('addToCart', this.product)
+      console.log(this.$store.state.cart)
+      this.presentAlert(); 
     }
   }
 });
