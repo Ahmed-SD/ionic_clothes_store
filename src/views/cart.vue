@@ -17,7 +17,7 @@
             <ion-card-header></ion-card-header>
             <ion-card-content>
               <div class="head flex items-center space-y-2">
-                <ion-img :src="item.images[0]" class="w-48"></ion-img>
+                <ion-img src="abc.jpg" class="w-48"></ion-img>
                 <div class="content">
                   <ion-card-title class="text-center">{{item.name}}</ion-card-title>
 
@@ -185,11 +185,22 @@ export default {
         sum += item.price;
       });
       return sum;
-    }
+    },
+    hello(){
+      if (this.cart.length == 0) {
+        this.empty = !this.empty;
+        this.full = !this.full;
+      } else {
+        this.full = false;
+        this.empty = true;
+      }
+  },
   },
   computed: mapGetters(["cart"]),
   created() {
     this.cart = this.$store.getters.cart;
+        // this.hello()
+
     //   if (this.cart.length == 0) {
     //   this.empty = !this.empty;
     //   this.full = !this.full;

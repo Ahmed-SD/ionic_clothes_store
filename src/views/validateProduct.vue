@@ -14,9 +14,9 @@
     </ion-header>
     <ion-content class="h-full py-4">
       <div class="flex justify-between pt-4 p-2">
-           <h2>اللون</h2>
-           <h2>اختر واحدا</h2>
-         </div>
+        <h2>اللون</h2>
+        <h2>اختر واحدا</h2>
+      </div>
       <div class="grid grid-col grid-cols-3 gap-4 p-4 rounded w-full">
         <ion-img :src="product.image" class="w-full"></ion-img>
         <ion-img :src="product.image" class="w-full"></ion-img>
@@ -25,14 +25,27 @@
       </div>
 
       <div class="p-4">
-         <div class="flex justify-between p-2">
-           <h2>المقاس</h2>
-           <h2>اختر واحدا</h2>
-         </div>
+        <div class="flex justify-between p-2">
+          <h2>المقاس</h2>
+          <h2>اختر واحدا</h2>
+        </div>
         <div class="grid grid-col grid-cols-6 gap-4 p-4 rounded w-full">
-          <span class="p-2 bg-white flex items-center justify-center rounded" :key="item" v-for="item in 10">
-            {{item}}
-          </span>
+          <div v-if="product.category=='اقمصة' || product.category=='تشيرتات'">
+            t shirt
+          </div>
+          <div v-if="product.category=='أحذيه'">
+            indigo
+          </div>
+          <div v-if="product.category=='بناطلين'">
+            bntal
+          </div>
+          <!-- <span
+            class="p-2 bg-white flex items-center justify-center rounded"
+            :class="{'bg-red-500 text-white':bg[count]}"
+            :key="count"
+            v-for="(item, count) in 10"
+            @click="size(count)"
+          >{{item}}</span> -->
         </div>
       </div>
       <div class="qty py-4 px-2 flex justify-between items-center">
@@ -47,7 +60,7 @@
             <input
               type="number"
               class="outline-none focus:outline-none text-center w-full bg-white font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700 outline-none"
-              value="2"
+              v-model="qty"
             >
             <button
               class="bg-red-600 text-white hover:text-white hover:bg-red-700 p-3 rounded cursor-pointer flex flex-col items-center justify-center"
@@ -81,7 +94,14 @@ export default defineComponent({
   props: ["product"],
   data() {
     return {
-      content: "Content"
+      bg: [false,false,false,false,false,false,false,false,false,false,],
+      items: {
+        name: this.product.name,
+        size: "sm",
+        qty: this.qty,
+        color: "red",
+        img:this.product.images[0]
+      }
     };
   },
   components: { IonContent, IonHeader, IonTitle, IonToolbar },
@@ -107,9 +127,14 @@ export default defineComponent({
     },
     cart() {
       modalController.dismiss({ dismissed: true });
-      this.$store.dispatch('addToCart', this.product)
-      console.log(this.$store.state.cart)
-      this.presentAlert(); 
+      this.$store.dispatch("addToCart", this.items);
+      console.log(this.$store.state.cart);
+      this.presentAlert();
+    },
+    size(count){
+      this.bg[count]=!this.bg[count]
+      this.qty++
+      console.log(count)
     }
   }
 });

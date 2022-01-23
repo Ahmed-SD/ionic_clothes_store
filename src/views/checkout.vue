@@ -116,6 +116,7 @@ import { chevronBackOutline } from "ionicons/icons";
 
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
+import axios from 'axios'
 export default {
   name: "checkout",
   components: {
@@ -132,6 +133,7 @@ export default {
   },
   data() {
     return {
+      cart: [],
       v$: useVuelidate(),
       fullName: "",
       phone: "",
@@ -151,12 +153,24 @@ export default {
     };
   },
   methods: {
-    checkout() {
+    async checkout() {
       this.v$.$validate();
       if (!this.v$.$error) {
         this.validate = true;
-        this.$router.replace("/tabs/cart/checkout/order");
         // do order function here
+        this.cart = this.$store.getters.cart
+        const data = {
+          name: this.fullName,
+          phone: this.phone,
+          addr: this.add,
+          cart: this.cart
+        }
+        const response = await axios.post('https://gentle-inlet-00481.herokuapp.com/api/order', data)
+        if (response.status == 200) {
+        this.$router.replace("/tabs/cart/checkout/order");
+        }else{
+          alert("try again later")
+        }
       } else if (this.v$.$error) {
         this.validate = false;
         console.log(this.v$, this.phone);
