@@ -60,7 +60,7 @@
             <input
               type="number"
               class="outline-none focus:outline-none text-center w-full bg-white font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700 outline-none"
-              v-model="qty"
+              v-model="quant"
             >
             <button
               class="bg-red-600 text-white hover:text-white hover:bg-red-700 p-3 rounded cursor-pointer flex flex-col items-center justify-center"
@@ -95,10 +95,10 @@ export default defineComponent({
   data() {
     return {
       bg: [false,false,false,false,false,false,false,false,false,false,],
+      quant: 0,
       items: {
         name: this.product.name,
         size: "sm",
-        qty: this.qty,
         color: "red",
         img:this.product.images[0]
       }
@@ -123,10 +123,13 @@ export default defineComponent({
     },
     checkout() {
       this.dismissModal();
+      this.items = {...this.items, qty: this.quant}
+      this.$store.dispatch("addToCart", this.items);
       this.$router.replace("/tabs/cart/checkout");
     },
     cart() {
       modalController.dismiss({ dismissed: true });
+      this.items = {...this.items, qty: this.quant}
       this.$store.dispatch("addToCart", this.items);
       console.log(this.$store.state.cart);
       this.presentAlert();

@@ -14,6 +14,7 @@
               type="text"
               class="h-12 w-full pl-10 pr-20 rounded-full z-0 focus:shadow focus:outline-none"
               placeholder="ابحث عن منتج"
+              @click="seacrh()"
             >
             <div class="absolute top-2 right-2">
               <button class="p-2 text-white rounded-full bg-red-500 hover:bg-red-600">

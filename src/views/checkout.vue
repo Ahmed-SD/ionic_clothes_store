@@ -110,7 +110,8 @@ import {
   IonCard,
   IonCardContent,
   IonText,
-  IonButton
+  IonButton,
+  toastController
 } from "@ionic/vue";
 import { chevronBackOutline } from "ionicons/icons";
 
@@ -165,16 +166,26 @@ export default {
           addr: this.add,
           cart: this.cart
         }
-        const response = await axios.post('https://gentle-inlet-00481.herokuapp.com/api/order', data)
+        const response = await axios.post('https://polar-journey-85906.herokuapp.com/api/orders', data)
         if (response.status == 200) {
         this.$router.replace("/tabs/cart/checkout/order");
         }else{
           alert("try again later")
         }
       } else if (this.v$.$error) {
-        this.validate = false;
+        this.failed()
         console.log(this.v$, this.phone);
       }
+    },
+       async failed() {
+      const toast = await toastController.create({
+        message: " الرجاء ادخال رقم الهاتف ",
+        duration: 4000,
+        position: "top",
+
+        color: "primary"
+      });
+      return toast.present();
     }
   }
 };

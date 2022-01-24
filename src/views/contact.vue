@@ -151,21 +151,23 @@ export default {
       name: "",
       email: "",
       message: "",
-      phone:"",
+      phone: "",
       validate: true
     };
   },
   methods: {
     send() {
       if (this.name == "" && this.email == "" && this.message == "") {
-        this.validate = !this.validate;
+        this.failed()
       } else if (this.name != "" && this.email != "" && this.message != "") {
         this.validate = true;
-        this.name == " ";
-        this.email == " ";
-        this.message == " ";
+
         // do email function
-        this.openToast();
+        this.success();
+        this.name = "";
+        this.email = "";
+        this.message = "";
+        this.phone = "";
       }
     },
     async presentAlert() {
@@ -180,10 +182,22 @@ export default {
       const { role } = await alert.onDidDismiss();
       console.log("onDidDismiss resolved with role", role);
     },
-    async openToast() {
+    async success() {
       const toast = await toastController.create({
         message: "تم ارسال رسالتك",
         duration: 4000,
+        position: "top",
+
+        color: "success"
+      });
+      return toast.present();
+    },
+        async failed() {
+      const toast = await toastController.create({
+        message: " الرجاء ملء كل الحقول ",
+        duration: 4000,
+        position: "top",
+
         color: "primary"
       });
       return toast.present();

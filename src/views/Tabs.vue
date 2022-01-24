@@ -17,7 +17,7 @@
           <i class="fi fi-rr-shopping-cart-add text-2xl"></i>
           <ion-badge class="mx-2" outline size="large" color="primary" mode="ios"> </ion-badge>
           <h2 class="text-center">السله</h2>
-        </ion-tab-button>`
+        </ion-tab-button>
         <ion-tab-button @click="presentLoading" tab="contact" href="/tabs/contact">
           <i class="fi fi-rr-comment text-2xl"></i>
           <h2 class="text-center">تواصل معنا</h2>
