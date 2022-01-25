@@ -19,7 +19,7 @@
           <ion-card class="w-full h-128">
             <router-link to="/tabs/category/products/product/0">
               <ion-card-header>
-                <ion-img :src="product.image" class="w-full"></ion-img>
+                <ion-img :src="'https://polar-journey-85906.herokuapp.com'+product.images[0]" class="w-full"></ion-img>
               </ion-card-header>
             </router-link>
 

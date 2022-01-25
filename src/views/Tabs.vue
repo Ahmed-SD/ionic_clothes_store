@@ -3,22 +3,22 @@
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
       <ion-tab-bar slot="bottom">
-        <ion-tab-button @click="presentLoading" tab="home" href="/tabs/home">
+        <ion-tab-button tab="home" href="/tabs/home">
           <i class="fi fi-rr-home text-2xl"></i>
           <h2 class="text-center">الرئيسيه</h2>
         </ion-tab-button>
 
-        <ion-tab-button @click="presentLoading" tab="category" href="/tabs/category">
+        <ion-tab-button tab="category" href="/tabs/category">
           <i class="fi fi-rr-apps text-2xl"></i>
           <h2 class="text-center">الفئات</h2>
         </ion-tab-button>
 
-        <ion-tab-button @click="presentLoading" dir="ltr" tab="cart" href="/tabs/cart">
+        <ion-tab-button dir="ltr" tab="cart" href="/tabs/cart">
           <i class="fi fi-rr-shopping-cart-add text-2xl"></i>
           <ion-badge class="mx-2" outline size="large" color="primary" mode="ios"> </ion-badge>
           <h2 class="text-center">السله</h2>
         </ion-tab-button>
-        <ion-tab-button @click="presentLoading" tab="contact" href="/tabs/contact">
+        <ion-tab-button tab="contact" href="/tabs/contact">
           <i class="fi fi-rr-comment text-2xl"></i>
           <h2 class="text-center">تواصل معنا</h2>
         </ion-tab-button>
@@ -47,6 +47,9 @@ export default {
     IonPage,
     IonBadge,
     IonRouterOutlet
+  },
+  mounted() {
+    this.presentLoading()
   },
 
   data() {

@@ -121,7 +121,8 @@ import {
   IonLabel,
   IonText,
   IonIcon,
-  IonImg
+  IonImg,
+  loadingController
 } from "@ionic/vue";
 import { addOutline, removeOutline, trashOutline } from "ionicons/icons";
 import { mapGetters } from "vuex";
@@ -153,7 +154,6 @@ export default {
   methods: {
     addQty(index) {
       this.cart[index].qty++;
-      this.cart[index].price = this.cart[index].price * this.cart[index].qty;
     },
     remQty(index) {
       if (this.cart[index].qty == 0) {
@@ -195,6 +195,19 @@ export default {
         this.empty = true;
       }
   },
+   async presentLoading() {
+      const loading = await loadingController.create({
+        cssClass: "loader",
+        message: '<img src="https://st.depositphotos.com/47577860/52256/v/600/depositphotos_522560928-stock-illustration-loading-spanner-spinner-icon-solid.jpg" >',
+        duration: 1000
+      });
+
+      await loading.present();
+
+      setTimeout(function() {
+        loading.dismiss();
+      }, 1000);
+    }
   },
   computed: mapGetters(["cart"]),
   created() {
@@ -208,6 +221,9 @@ export default {
     //   this.full = false;
     //   this.empty = true;
     // }
+  },
+  mounted(){
+this.presentLoading()
   },
   setup() {
     return {

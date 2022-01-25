@@ -3,13 +3,13 @@
     <div class="w-full">
       <!--  -->
       <router-link
-        to="/tabs/category/products/0"
+        :to="'/tabs/category/products/'+index"
         :key="item.id"
-        v-for="item in allTypes"
+        v-for="(item,index) in allTypes"
       >
         <ion-card>
           <ion-card-content>
-            <ion-img :src="item.img" class="w-full py-2"></ion-img>
+            <ion-img :src="item.image" class="w-full py-2"></ion-img>
             <ion-text class="text-center">
               <h1>{{item.name}}</h1>
             </ion-text>

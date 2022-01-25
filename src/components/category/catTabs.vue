@@ -1,8 +1,7 @@
 <template>
-  <div class="tebs py-2 bg-white h-68 relative">
+  <div class="tebs bg-white h-68 relative">
     <ion-segment
       class="flex flex-col iems-center juustfiy-center sticky top-0"
-      @ionChange="segmentChanged($event)"
     >
       <ion-segment-button value="friends" class="h-42">
         <ion-label>افضل الماركات</ion-label>

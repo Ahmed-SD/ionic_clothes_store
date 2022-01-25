@@ -163,12 +163,13 @@ export default {
         const data = {
           name: this.fullName,
           phone: this.phone,
-          addr: this.add,
+          addr: this.addr,
           cart: this.cart
         }
         const response = await axios.post('https://polar-journey-85906.herokuapp.com/api/orders', data)
         if (response.status == 200) {
         this.$router.replace("/tabs/cart/checkout/order");
+        console.log(this.cart,"cart is empty")
         }else{
           alert("try again later")
         }

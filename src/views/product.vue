@@ -14,8 +14,8 @@
     <ion-content>
       <div class="product">
         <ion-slides mode="ios" pager="ios" scrollbar="ios">
-          <ion-slide>
-            <ion-img class="w-full" src="img.jpg"></ion-img>
+          <ion-slide :key="count" v-for="(img,count) in products[id].images">
+            <ion-img class="w-full" :src="'products[id].name'+img"></ion-img>
           </ion-slide>
         </ion-slides>
         <ion-card>

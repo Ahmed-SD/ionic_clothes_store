@@ -19,7 +19,7 @@
           <ion-card class="w-full h-full flex flex-col justify-between">
             <ion-card-header>
               <ion-card-title>
-                <ion-img :src="item.img" class="w-full h-32"></ion-img>
+                <ion-img :src="'https://polar-journey-85906.herokuapp.com'+item.img" class="w-full h-32"></ion-img>
               </ion-card-title>
             </ion-card-header>
             <ion-card-content>
