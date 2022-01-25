@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="hidden">
-      {{scet()}}
-    </div>
+    <div class="hidden">{{scet()}}</div>
     <div v-if="shown" class="products grid grid-col gap-4 grid-cols-2">
       <ion-card class="w-full h-min">
         <ion-card-header>
@@ -82,7 +80,8 @@ import {
   IonCardHeader,
   IonCardContent,
   IonImg,
-  IonText
+  IonText,
+  toastController
 } from "@ionic/vue";
 import { chevronBackOutline } from "ionicons/icons";
 import { mapGetters, mapActions } from "vuex";
@@ -103,23 +102,37 @@ export default {
   },
   data() {
     return {
-      shown:true
+      shown: true
     };
   },
   methods: {
     ...mapActions(["fetchProducts"]),
-    scet(){
-  if(this.allProducts.length > 0){
-      this.shown = false
-    }
-    return this.shown
+    async openToast() {
+      const toast = await toastController.create({
+        message: "الرجاء التحقق من الاتصال بالانترنت",
+        duration: 6000,
+        position: "top",
+
+        color: "primary"
+      });
+      return toast.present();
+    },
+    scet() {
+      if (this.allProducts.length > 0) {
+        this.shown = false;
+      } else {
+        setTimeout(() => {
+          this.openToast();
+        }, 10000);
+      }
+      return this.shown;
     }
   },
   computed: mapGetters(["allProducts"]),
   mounted() {
     this.fetchProducts();
-    this.sectl = this.allProducts
-    console.log(this.sectl.length)
+    this.sectl = this.allProducts;
+    console.log(this.sectl.length);
   }
 };
 </script>

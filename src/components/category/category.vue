@@ -69,7 +69,13 @@
   </div>
 </template>
 <script>
-import { IonText, IonCard, IonCardContent, IonImg } from "@ionic/vue";
+import {
+  IonText,
+  IonCard,
+  IonCardContent,
+  IonImg,
+  toastController
+} from "@ionic/vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -82,9 +88,23 @@ export default {
   },
   methods: {
     ...mapActions(["fetchTypes"]),
+    async openToast() {
+      const toast = await toastController.create({
+        message: "الرجاء التحقق من الاتصال بالانترنت",
+        duration: 6000,
+        position: "top",
+
+        color: "primary"
+      });
+      return toast.present();
+    },
     scet() {
       if (this.allTypes.length > 0) {
         this.shown = false;
+      } else {
+        setTimeout(() => {
+          this.openToast();
+        }, 10000);
       }
       return this.shown;
     }
