@@ -29,6 +29,6 @@ export default {
     category,
     search,
     catTabs
-  }
+  },
 };
 </script>

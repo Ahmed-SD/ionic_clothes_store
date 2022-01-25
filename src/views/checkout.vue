@@ -13,11 +13,6 @@
     </ion-header>
     <ion-content>
       <form action @submit.prevent="checkout()">
-        <div class="p-4" :class="{hidden:validate}">
-          <div class="w-full bg-red-300 border border-red-800 p-4">
-            <h2 class="text-red-800">الرحاء ملء كل الحقول</h2>
-          </div>
-        </div>
         <div class="checkout py-4">
           <ion-card>
             <ion-card-content>
@@ -68,7 +63,7 @@
                   <b>ملخص الطبيه</b>
                 </ion-text>
                 <ion-text color="dark">
-                  <b>3 منتجات</b>
+                  <b>{{$store.getters.cart.lenght}} منتجات</b>
                 </ion-text>
               </div>
               <div class="products flex justify-between">
@@ -84,7 +79,7 @@
                   <span>المجموع الكلي</span>
                 </ion-text>
                 <ion-text color="dark">
-                  <span>4500$</span>
+                  <span>{{$store.getters.cart.newPrice}}$</span>
                 </ion-text>
               </div>
             </ion-card-content>
@@ -118,6 +113,7 @@ import { chevronBackOutline } from "ionicons/icons";
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 import axios from 'axios'
+
 export default {
   name: "checkout",
   components: {
@@ -139,7 +135,6 @@ export default {
       fullName: "",
       phone: "",
       addr: "",
-      validate: true
     };
   },
   setup() {

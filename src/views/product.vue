@@ -89,7 +89,8 @@ import {
   IonText,
   IonSlides,
   IonSlide,
-  IonImg
+  IonImg,
+  loadingController
 } from "@ionic/vue";
 import validateProduct from "./validateProduct.vue";
 import { chevronBackOutline } from "ionicons/icons";
@@ -147,12 +148,28 @@ export default {
         }
       });
       return modal.present();
+    },
+      async presentLoading() {
+      const loading = await loadingController.create({
+        cssClass: "loader",
+        message: '<img src="https://st.depositphotos.com/47577860/52256/v/600/depositphotos_522560928-stock-illustration-loading-spanner-spinner-icon-solid.jpg" >',
+        duration: 1000
+      });
+
+      await loading.present();
+
+      setTimeout(function() {
+        loading.dismiss();
+      }, 1000);
     }
   },
   created() {
     this.$store.dispatch('fetchProducts')
     this.products = this.$store.getters.allProducts
     this.id = this.$route.params.id
+  },
+  mounted() {
+    this.presentLoading()
   },
 };
 </script>

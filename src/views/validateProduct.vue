@@ -115,15 +115,18 @@ export default defineComponent({
   created() {
     console.log(this.product);
     this.shirt[0] = "S";
-    if (this.product.redSize[0] == true) {
-      this.shirt[0] = "S";
-    } else if (this.product.redSize[1] == true) {
-      this.shirt[1] = "M";
-    } else if (this.product.redSize[2] == true) {
-      this.shirt[2] = "XL";
-    } else if (this.product.redSize[3] == true) {
-      this.shirt[3] = "XXL";
-    }
+    this.shirt[1] = "M";
+    this.shirt[2] = "XL";
+    this.shirt[3] = "XXL";
+    // if (this.product.redSize[0] == true) {
+    //   this.shirt[0] = "S";
+    // } else if (this.product.redSize[1] == true) {
+    //   this.shirt[1] = "M";
+    // } else if (this.product.redSize[2] == true) {
+    //   this.shirt[2] = "XL";
+    // } else if (this.product.redSize[3] == true) {
+    //   this.shirt[3] = "XXL";
+    // }
   },
   methods: {
     async presentAlert() {
@@ -150,13 +153,18 @@ export default defineComponent({
       this.$router.replace("/tabs/cart/checkout");
     },
     cart() {
-      if (this.items.size != "") {
+      if (this.items.size == "") {
         this.failed();
       } else {
         this.carte = this.$store.getters.cart;
         console.log(this.carte.length);
         if (this.carte.length == 0) {
-          this.items = { ...this.items, qty: this.quant ,price:this.quant*this.product.price };
+          this.items = {
+            ...this.items,
+            qty: this.quant,
+            price:this.product.price,
+            newPrice : this.product.price * this.quant
+          };
           this.$store.dispatch("addToCart", this.items);
           console.log(this.$store.state.cart);
           this.presentAlert();
@@ -183,8 +191,11 @@ export default defineComponent({
     },
     size(index, item) {
       this.bg[index] = !this.bg[index];
-      this.qty++;
+      if (this.bg[index] == false) {
+        this.items.size = "";
+      } else {
       this.items.size = item;
+      }
     },
     img(count, img) {
       this.br[count] = !this.br[count];
@@ -207,17 +218,16 @@ export default defineComponent({
       });
       return toast.present();
     },
-     addQty() {
+    addQty() {
       this.quant++;
-      
     },
     remQty() {
       if (this.quant == 1) {
-        this.quant = 1
+        this.quant = 1;
       } else {
         this.quant--;
       }
-    },
+    }
   }
 });
 </script>

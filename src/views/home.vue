@@ -1,11 +1,12 @@
 <template>
   <ion-page>
     <ion-content>
-
       <search></search>
       <!-- sections of cat -->
       <main-cat></main-cat>
       <!-- categroy -->
+
+      
       <cat></cat>
       <!-- marka sec -->
 
@@ -45,9 +46,7 @@ export default {
     productsHeaeder
   },
   data() {
-    return {
-     
-    };
+    return {};
   },
   setup() {
     return {
@@ -67,7 +66,7 @@ export default {
       await alert.present();
       const { role } = await alert.onDidDismiss();
       console.log("onDidDismiss resolved with role", role);
-      console.log(this.allProducts, this.allTypes, this.allBrands)
+      console.log(this.allProducts, this.allTypes, this.allBrands);
     }
   },
   computed: mapGetters(["allProducts", "allTypes", "allBrands"]),
@@ -75,6 +74,6 @@ export default {
     this.fetchProducts();
     this.fetchTypes();
     this.fetchBrands();
-  },
+  }
 };
 </script>

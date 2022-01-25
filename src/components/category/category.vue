@@ -1,6 +1,55 @@
 <template>
   <div class="categories w-full col-span-2 overflow-hidden">
-    <div class="w-full">
+    <div class="hidden">{{scet()}}</div>
+    <div v-if="shown" class="w-full products grid grid-col gap-4 grid-cols-1">
+      <ion-card class="w-full h-min">
+        <ion-card-header>
+          <ion-skeleton-text class="w-full h-24" animated></ion-skeleton-text>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="title text-center">
+            <ion-text>
+              <h2>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </h2>
+            </ion-text>
+          </div>
+
+          <div class="button text-center space-y-2">
+            <ion-text color="primary">
+              <h2>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </h2>
+            </ion-text>
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <ion-card class="w-full h-min">
+        <ion-card-header>
+          <ion-skeleton-text class="w-full h-24" animated></ion-skeleton-text>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="title text-center">
+            <ion-text>
+              <h2>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </h2>
+            </ion-text>
+          </div>
+
+          <div class="button text-center space-y-2">
+            <ion-text color="primary">
+              <h2>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </h2>
+            </ion-text>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div v-if="!shown" class="w-full">
       <!--  -->
       <router-link
         :to="'/tabs/category/products/'+index"
@@ -20,17 +69,25 @@
   </div>
 </template>
 <script>
-import {IonText,IonCard,IonCardContent,IonImg} from "@ionic/vue";
+import { IonText, IonCard, IonCardContent, IonImg } from "@ionic/vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "category",
-  components: {IonText,IonCard,IonCardContent,IonImg},
+  components: { IonText, IonCard, IonCardContent, IonImg },
   data() {
-    return {};
+    return {
+      shown: true
+    };
   },
   methods: {
-    ...mapActions(["fetchTypes"])
+    ...mapActions(["fetchTypes"]),
+    scet() {
+      if (this.allTypes.length > 0) {
+        this.shown = false;
+      }
+      return this.shown;
+    }
   },
   computed: mapGetters(["allTypes"]),
   created() {

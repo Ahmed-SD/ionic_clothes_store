@@ -1,6 +1,57 @@
 <template>
   <div>
-    <div class="products grid grid-col gap-4 grid-cols-2">
+    <div class="hidden">
+      {{scet()}}
+    </div>
+    <div v-if="shown" class="products grid grid-col gap-4 grid-cols-2">
+      <ion-card class="w-full h-min">
+        <ion-card-header>
+          <ion-skeleton-text class="w-full h-24" animated></ion-skeleton-text>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="title text-center">
+            <ion-text>
+              <h2>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </h2>
+            </ion-text>
+          </div>
+
+          <div class="button text-center space-y-2">
+            <ion-text color="primary">
+              <h2>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </h2>
+            </ion-text>
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <ion-card class="w-full h-min">
+        <ion-card-header>
+          <ion-skeleton-text class="w-full h-24" animated></ion-skeleton-text>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="title text-center">
+            <ion-text>
+              <h2>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </h2>
+            </ion-text>
+          </div>
+
+          <div class="button text-center space-y-2">
+            <ion-text color="primary">
+              <h2>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </h2>
+            </ion-text>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div v-if="!shown" class="products grid grid-col gap-4 grid-cols-2">
       <ion-card class="w-full h-min" :key="product.id" v-for="(product,index) in allProducts">
         <router-link :to="'/tabs/category/products/product/'+index">
           <ion-card-header>
@@ -51,17 +102,24 @@ export default {
     IonText
   },
   data() {
-    return {};
+    return {
+      shown:true
+    };
   },
   methods: {
     ...mapActions(["fetchProducts"]),
-    next() {
-      this.$refs.slides.sideTo(2, 1000);
+    scet(){
+  if(this.allProducts.length > 0){
+      this.shown = false
+    }
+    return this.shown
     }
   },
   computed: mapGetters(["allProducts"]),
   mounted() {
     this.fetchProducts();
+    this.sectl = this.allProducts
+    console.log(this.sectl.length)
   }
 };
 </script>

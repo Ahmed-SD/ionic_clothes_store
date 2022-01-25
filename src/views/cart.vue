@@ -24,7 +24,7 @@
                   <div class="price py-4 flex justify-between items-center">
                     <ion-text color="primary" class="flex space-x-4">
                       <h2 class="text-black w-full">السعر :</h2>
-                      <h2>{{item.price}}$</h2>
+                      <h2>{{item.newPrice}}$</h2>
                     </ion-text>
                   </div>
                 </div>
@@ -154,6 +154,7 @@ export default {
   methods: {
     addQty(index) {
       this.cart[index].qty++;
+      this.cart[index].newPrice += this.cart[index].price;
     },
     remQty(index) {
       if (this.cart[index].qty == 0) {
@@ -167,6 +168,7 @@ export default {
         }
       } else {
         this.cart[index].qty--;
+        this.cart[index].newPrice -= this.cart[index].price;
       }
     },
     removeProduct(index) {
@@ -182,11 +184,11 @@ export default {
     totalprice() {
       let sum = 0;
       this.cart.forEach(item => {
-        sum += item.price;
+        sum += item.newPrice;
       });
       return sum;
     },
-    hello(){
+    hello() {
       if (this.cart.length == 0) {
         this.empty = !this.empty;
         this.full = !this.full;
@@ -194,11 +196,12 @@ export default {
         this.full = false;
         this.empty = true;
       }
-  },
-   async presentLoading() {
+    },
+    async presentLoading() {
       const loading = await loadingController.create({
         cssClass: "loader",
-        message: '<img src="https://st.depositphotos.com/47577860/52256/v/600/depositphotos_522560928-stock-illustration-loading-spanner-spinner-icon-solid.jpg" >',
+        message:
+          '<img src="https://st.depositphotos.com/47577860/52256/v/600/depositphotos_522560928-stock-illustration-loading-spanner-spinner-icon-solid.jpg" >',
         duration: 1000
       });
 
@@ -212,7 +215,7 @@ export default {
   computed: mapGetters(["cart"]),
   created() {
     this.cart = this.$store.getters.cart;
-        // this.hello()
+    // this.hello()
 
     //   if (this.cart.length == 0) {
     //   this.empty = !this.empty;
@@ -222,8 +225,8 @@ export default {
     //   this.empty = true;
     // }
   },
-  mounted(){
-this.presentLoading()
+  mounted() {
+    this.presentLoading();
   },
   setup() {
     return {
