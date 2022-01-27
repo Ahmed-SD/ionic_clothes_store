@@ -1,12 +1,15 @@
 <template>
   <ion-page>
     <ion-content>
+      <ion-refresher slot="fixed" @ionRefresh="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
       <search></search>
       <!-- sections of cat -->
       <main-cat></main-cat>
       <!-- categroy -->
 
-      
       <cat></cat>
       <!-- marka sec -->
 
@@ -15,7 +18,7 @@
 
       <productsHeaeder></productsHeaeder>
 
-      <products></products>
+      <homeProducts></homeProducts>
     </ion-content>
   </ion-page>
 </template>
@@ -29,7 +32,7 @@ import search from "../components/search.vue";
 import mainCat from "../components/category/mainCat.vue";
 import cats from "../components/category/cats.vue";
 import cat from "../components/category/cat.vue";
-import products from "../components/products/products.vue";
+import homeProducts from "../components/products/homeProducts.vue";
 import productsHeaeder from "../components/productsHeader.vue";
 import { mapGetters, mapActions } from "vuex";
 
@@ -42,16 +45,23 @@ export default {
     mainCat,
     cats,
     cat,
-    products,
+    homeProducts,
     productsHeaeder
   },
   data() {
-    return {};
+    return {
+      renderComponent: true
+    };
   },
   setup() {
+    const doRefresh = () => {
+        // Remove my-component from the DOM
+       location.reload()
+    };
     return {
       arrowBackOutline,
-      cartOutline
+      cartOutline,
+      doRefresh
     };
   },
   methods: {

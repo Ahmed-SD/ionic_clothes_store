@@ -25,7 +25,7 @@
           <ion-select-option value="purple">من الاقل الي الاعلي</ion-select-option>
         </ion-select>
       </ion-item>
-      <products></products>
+      <productsPage></productsPage>
     </ion-content>
   </ion-page>
 </template>
@@ -46,7 +46,7 @@ import {
 import { chevronBackOutline } from "ionicons/icons";
 
 // custom components
-import products from "../components/products/products.vue";
+import productsPage from "../components/products/productsPage.vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -66,11 +66,12 @@ export default {
     IonToolbar,
     IonContent,
     IonBackButton,
-    products,
+    productsPage,
     IonItem,
     IonLabel,
     IonSelect,
-    IonSelectOption
+    IonSelectOption,
+
   },
   methods: {
     ...mapActions(["fetchTypes"]),
