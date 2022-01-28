@@ -54,7 +54,7 @@
       <router-link
         :to="'/tabs/category/products/'+index"
         :key="item.id"
-        v-for="(item,index) in allTypes"
+        v-for="(item,index) in filteredTypes"
       >
         <ion-card>
           <ion-card-content>
@@ -76,7 +76,6 @@ import {
   IonImg,
   toastController
 } from "@ionic/vue";
-import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "category",
@@ -87,7 +86,6 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["fetchTypes"]),
     async openToast() {
       const toast = await toastController.create({
         message: "الرجاء التحقق من الاتصال بالانترنت",
@@ -99,7 +97,7 @@ export default {
       return toast.present();
     },
     scet() {
-      if (this.allTypes.length > 0) {
+      if (this.$store.getters.allTypes.length > 0) {
         this.shown = false;
       } else {
         setTimeout(() => {
@@ -109,9 +107,12 @@ export default {
       return this.shown;
     }
   },
-  computed: mapGetters(["allTypes"]),
-  created() {
-    this.fetchTypes();
+    computed: {
+    filteredTypes() {
+      return this.$store.getters.allTypes.filter((item) => {
+          return item.category.includes(this.$store.state.selectedCat);
+      });
+    },
   }
 };
 </script>

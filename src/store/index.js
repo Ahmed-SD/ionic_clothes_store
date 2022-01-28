@@ -6,6 +6,8 @@ import cart from './modules/cart'
 
 export default createStore({
   state: {
+    selectedType: '',
+    selectedCat: ''
   },
   mutations: {
   },

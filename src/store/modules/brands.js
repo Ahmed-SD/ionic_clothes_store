@@ -12,7 +12,7 @@ const getters = {
 
 const actions = {
   async fetchBrands({ commit }) {
-    const response = await axios.get("https://polar-journey-85906.herokuapp.com/api/brands");
+    const response = await axios.get("https://serene-beach-63236.herokuapp.com/api/brands");
     console.log(response.data);
     commit("setBrands", response.data);
   },

@@ -11,6 +11,7 @@
         <div class="search">
           <div class="relative" dir="ltr">
             <input
+            v-model="findItem"
               type="text"
               class="h-12 w-full pl-10 pr-20 rounded-full z-0 focus:shadow focus:outline-none"
               placeholder="ابحث عن منتج"
@@ -56,6 +57,7 @@
           <ion-select-option value="purple">من الاقل الي الاعلي</ion-select-option>
         </ion-select>
       </ion-item>
+      <productPage :allProducts="filteredProducts"></productPage>
     </ion-content>
   </ion-page>
 </template>
@@ -72,9 +74,14 @@ import {
   IonSelectOption
 } from "@ionic/vue";
 import { chevronBackOutline } from "ionicons/icons";
-
+import productPage from '../components/products/productPage.vue'
 export default {
   name: "search",
+  data(){
+    return {
+      findItem: ''
+    }
+  },
   setup() {
     return {
       chevronBackOutline
@@ -89,8 +96,17 @@ export default {
     IonItem,
     IonLabel,
     IonSelect,
-    IonSelectOption
-  }
+    IonSelectOption,
+    productPage
+  },
+    computed: {
+    filteredProducts() {
+      let self = this;
+      return this.$store.getters.allProducts.filter((item) => {
+        return item.name.toLowerCase().includes(self.findItem.toLowerCase());
+      });
+    },
+  },
 };
 </script>
 

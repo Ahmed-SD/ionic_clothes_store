@@ -53,7 +53,7 @@
       <ion-card class="w-full h-min" :key="product.id" v-for="(product,index) in allProducts">
         <router-link :to="'/tabs/category/products/product/'+index">
           <ion-card-header>
-            <ion-img :src="product.image" class="w-full"></ion-img>
+            <ion-img :src="'https://serene-beach-63236.herokuapp.com'+product.images[0]" class="w-full"></ion-img>
           </ion-card-header>
         </router-link>
 

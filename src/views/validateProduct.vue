@@ -19,7 +19,7 @@
       </div>
       <div class="grid grid-col grid-cols-3 gap-4 p-4 rounded w-full">
         <div :key="count" v-for="(img,count) in product.images"></div>
-        <ion-img @click="img(count,img)" :src="'https://polar-journey-85906.herokuapp.com'+img"></ion-img>
+        <ion-img @click="img(count,img)" :src="'https://serene-beach-63236.herokuapp.com'+img"></ion-img>
       </div>
 
       <div class="p-4">
